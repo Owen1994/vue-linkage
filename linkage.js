@@ -1,8 +1,9 @@
 export default {
     install(Vue,options) {
         function dropDownHandle(linkageOptions,callback) {
-            //清空下拉列表，进行初始化
+            //清空下拉列表项内容，进行初始化
             linkageOptions.bindingEle.children[1] && linkageOptions.bindingEle.removeChild(linkageOptions.bindingEle.children[1]);
+            
             //调用方法时将dropDown挂载绑定
             let temp;
             if(linkageOptions.data) {
@@ -29,7 +30,7 @@ export default {
                 dropDown.isShow = !dropDown.isShow;
             };
 
-            //获取某元素元素的所有子元素
+            //获取绑定的父元素下的所有子元素
             let arr = [];
             function getAllChildren(dom) {
                 if(dom.children.length) {
@@ -42,7 +43,7 @@ export default {
             }
             let bindingEleArr = getAllChildren(linkageOptions.bindingEle);
 
-            //点击非弹出列表区域时隐藏已经显示出来的下拉列表
+            //点击非弹出列表区域时隐藏已经显示的下拉列表
             document.body.addEventListener('click',function(e) {
                 if(dropDown.isShow) {
                     var flag = true;
@@ -73,11 +74,7 @@ export default {
                 }
             }
         }
-        //全局注册组件
-
         //添加全局方法
         Vue.prototype.$dropDown = dropDownHandle;
-        
-        //注入组件
     }
 }
