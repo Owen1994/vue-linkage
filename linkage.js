@@ -1,3 +1,7 @@
+/**
+ * created by: Owen
+ * date: 2018-04-17
+ */
 export default {
     install(Vue,options) {
         function dropDownHandle(linkageOptions,callback) {
